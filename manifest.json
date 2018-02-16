@@ -9,7 +9,9 @@
     "content_scripts": [
         {
         "matches": [ "https://www.google.co.jp/search?*",
-                   "https://www.google.com/search?*",
+                     "https://www.google.com/search?*",
+                     "https://*.wikipedia.org/wiki/*",
+                     "http://webcache.googleusercontent.com/search?*",
                      "https://www.google.co.jp/webhp?sourceid=*" ],
         "js": [ "content_script.js" ],
         "run_at": "document_end"
