@@ -4,7 +4,7 @@ var shortcut = {
     // Check activeElement
     A: function() { console.log(document.activeElement) },
     // go English page of wikipedia
-    E: function() { openEngWiki() },
+    E: function() { switchWikiLang() },
     // All -> iMages
     m: function() { window.location.href = window.location.href + "&tbm=isch" },
     // All -> Map
@@ -34,29 +34,14 @@ function openInBackground() {
     a.dispatchEvent(evt);
 }
 
-function openEngWiki() {
-    // var elements = document.getElementsByTagName("a");
+function switchWikiLang() {
     var elements = document.getElementsByClassName("interlanguage-link interwiki-en");
     if (elements.length) {
-        // var boolval = (elements != null)
-        // console.log(boolval);
-        // console.log(elements);
-        // console.log(elements.length);
-        // console.log(elements[0].firstChild.href);
         window.location.href = elements[0].firstChild.href;
     }
     var elements = document.getElementsByClassName("interlanguage-link interwiki-ja");
-    console.log(elements);
     if (elements.length) {
         window.location.href = elements[0].firstChild.href;
     }
-    // var elements = document.getElementsByClassName("interlanguage-link interwiki-en");
-    // console.log(elements);
-    // console.log(elements[0].firstChild);
-    // console.log(elements[0].firstChild.href);
-    // window.location.href = elements[0].firstChild.href
-    // console.log(elements[5].text);
-    // console.log(elements.indexOf("English"));
-    // assert(elements);
 }
 
