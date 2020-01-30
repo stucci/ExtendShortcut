@@ -35,13 +35,25 @@ function openInBackground() {
 }
 
 function switchWikiLang() {
-    var elements = document.getElementsByClassName("interlanguage-link interwiki-en");
-    if (elements.length) {
-        window.location.href = elements[0].firstChild.href;
-    }
-    var elements = document.getElementsByClassName("interlanguage-link interwiki-ja");
-    if (elements.length) {
-        window.location.href = elements[0].firstChild.href;
+    reg_google = new RegExp("https://www.google.com/search?.*");
+    reg_wiki = new RegExp("https://.*.wikipedia.org/wiki/.*");
+    if (window.location.href.match(reg_google)) {
+        url_prm = "&gl=us&hl=en&pws=0&gws_rd=cr";
+        reg_url_prm = ".*" + url_prm + "(.*|$)";
+        console.log(window.location.href.match(reg_url_prm));
+        if (window.location.href.match(reg_url_prm)) {
+            window.location.href = window.location.href.replace(url_prm, "");
+        } else {
+            window.location.href = window.location.href + url_prm;
+        }
+    } else if (window.location.href.match(reg_wiki)) {
+        var elements = document.getElementsByClassName("interlanguage-link interwiki-en");
+        if (elements.length) {
+            window.location.href = elements[0].firstChild.href;
+        }
+        var elements = document.getElementsByClassName("interlanguage-link interwiki-ja");
+        if (elements.length) {
+            window.location.href = elements[0].firstChild.href;
+        }
     }
 }
-
